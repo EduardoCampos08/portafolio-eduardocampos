@@ -1,0 +1,87 @@
+.about-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .about-card {
+    background-color: var(--color-cards);
+    border: 2px solid var(--color-hover);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    gap: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .about-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-hover);
+  }
+  
+  .about-content {
+    flex: 1;
+    color: var(--color-text-primary);
+  }
+  
+  .about-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    color: var(--color-title-main-1);
+  }
+  
+  .about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .know-more-button {
+    background-color: var(--color-hover);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .know-more-button:hover {
+    background-color: #45dc78;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-photo {
+      width: 180px;
+      height: 180px;
+    }
+  
+    .about-content h3 {
+      font-size: 1.6rem;
+    }
+  
+    .about-content p {
+      font-size: 1rem;
+    }
+  }
+  

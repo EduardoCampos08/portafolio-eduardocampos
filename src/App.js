@@ -1,74 +1,142 @@
+// App.js
 import React from "react";
-import Hero from "./components/Hero";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import "./App.css";
+import Hero from "./components/Hero";
+import Projects from "./components/Projects";
+import SobreMi from "./components/SobreMi"
+import Cv from "./components/cv"; 
+import Contacto from "./components/Contacto";
+
+import Footer from "./components/Footer"; 
 import ParticlesBackground from "./components/ParticlesBackground";
+import ProjectPage from "./components/pages/ProjectPage";
+import "./App.css";
 
-function App() {
+import imagen from './components/svg/nave1.png';
+import imagen2 from './components/svg/dino.png';
+import imagen3 from './components/svg/ajolote.png';
+import imagen4 from './components/svg/click.png';
+import imagen5 from './components/svg/nave2.png';
+import imagen6 from './components/svg/bonsai.png';
+
+import { motion } from "framer-motion";
+
+
+
+function HomePage() {
+    const location = useLocation();
+
+    useEffect(() => {
+        document.body.style.cursor = `url(${imagen4}) 32 32, auto`;
+        if (location.state?.scrollTo) {
+          const section = document.getElementById(location.state.scrollTo);
+          setTimeout(() => {
+            section?.scrollIntoView({ behavior: "smooth" });
+          }, 100); // delay pequeño para asegurar que se haya renderizado
+        }
+      }, [location]);
   return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: "black",
-        minHeight: "100vh",
-        position: "relative",
-      }}
-    >
-      <ParticlesBackground />
-      <Navbar /> {/* Menú arriba a la izquierda */}
+    <>
+      <Navbar />
+      <main className="App" style={{ backgroundColor: "#fef6f1", minHeight: "100vh", position: "relative" }}>
+        <ParticlesBackground />
 
-      {/* Sección Home */}
-      <section
-        id="home"
-        style={{
-          height: "100vh",
+        {/* Sección Home */}
+        <section id="home" style={{
+          minHeight: "100vh",
+          paddingTop: "80px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "2rem",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
           zIndex: 10,
-          position: "relative",
-        }}
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          style={{
-            color: "white",
-            fontSize: "clamp(2.5rem, 6vw, 5rem)",
-            textAlign: "center",
-            lineHeight: "1.2",
-          }}
-        >
-          Hola, soy Eduardo Campos
-        </motion.h1>
+          position: "relative"
+        }}>
+          <div className="hero-title-container">
+            <motion.div
+              className="orbit-container"
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+            >
+              <div className="orbit-icon orbit-icon-1">
+                <img src={imagen} alt="Logo girando" />
+              </div>
+              <div className="orbit-icon orbit-icon-2">
+                <img src={imagen2} alt="Dino" />
+              </div>
+              <div className="orbit-icon orbit-icon-3">
+                <img src={imagen3} alt="Ajolote" />
+              </div>
+              <div className="orbit-icon orbit-icon-4">
+                <img src={imagen4} alt="Click" />
+              </div>
+              <div className="orbit-icon orbit-icon-5">
+                <img src={imagen5} alt="Nave" />
+              </div>
+              <div className="orbit-icon orbit-icon-6">
+                <img src={imagen6} alt="Bonsai" />
+              </div>
+            </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          style={{
-            color: "#aaa",
-            fontSize: "clamp(1rem, 2vw, 1.5rem)",
-            marginTop: "1rem",
-            textAlign: "center",
-            maxWidth: "600px",
-          }}
-        >
-          Desarrollador creativo con pasión por la tecnología, el diseño y la innovación.
-        </motion.p>
-      </section>
+            <motion.h1 className="hero-title">
+              <h1 className="hero-title-h1">
+                Hola, soy <br /> <span className="gradient-text">Eduardo Campos</span>
+              </h1>
+            </motion.h1>
 
-      {/* Sección Proyectos */}
-      <section id="projects">
-        <Hero />
-      </section>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="hero-description"
+            >
+              Creatividad y tecnología al servicio de la innovación.
+            </motion.p>
+          </div>
+        </section>
 
-      {/* Agregaremos más secciones después (About, Contact, etc.) */}
-    </div>
+        <section id="projects">
+          <Projects />
+        </section>
+
+        <section id="about" style={{ minHeight: "100vh", color: "white", padding: "2rem", backgroundColor: "#fef6f1" }}>
+            <h2 style={{ textAlign: "center", color: "var(--color-text-primary)", marginBottom: "2rem" }}>Sobre mí</h2>
+            <SobreMi />
+         </section>
+
+        <section id="contact" style={{ minHeight: "100vh", color: "white", padding: "2rem", backgroundColor: "#fef6f1" }}>
+          <Contacto />
+        </section>
+
+        <Footer />
+      </main>
+    </>
+  );
+}
+
+function ProjectPageWrapper() {
+  return (
+    <>
+      <Navbar />
+      <main style={{ paddingTop: "80px", backgroundColor: "#fef6f1", minHeight: "100vh" }}>
+        <ProjectPage />
+      </main>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/project/:projectId" element={<ProjectPageWrapper />} />
+      <Route path="/cv" element={<Cv />} />  
+    </Routes>
   );
 }
 

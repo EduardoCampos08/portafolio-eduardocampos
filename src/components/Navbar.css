@@ -1,6 +1,106 @@
-a{
-    color: red;
+/* Navbar.css */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-li a :hover{
-    opacity: 1;
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #5a5a5a;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background: #5a5a5a;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #a487ca;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+  display: flex;
+}
+
+.menu-links {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu-links li {
+  margin: 1.5rem 0;
+}
+
+.menu-links a {
+  font-size: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.menu-links a:hover {
+  color: #53FD8B;
+  cursor: help;
+}
+
+.menu-footer {
+  position: absolute;
+  bottom: 2rem;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+}
+
+
+  

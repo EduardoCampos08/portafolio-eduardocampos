@@ -1,0 +1,316 @@
+:root {
+    --color-background: #fef6f1;
+    --color-title-main-1: #a487ca;
+    --color-title-main-2: #f280ca;
+    --color-text-primary: #5a5a5a;
+    --color-cards: #94ddf9;
+    --color-hover: #53FD8B;
+  }
+  
+  .cv-container {
+    padding: 2rem;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+  
+  /* ---------- TÍTULO CON CÍRCULOS FLOTANTES ---------- */
+  
+  .cv-title-section {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .cv-name {
+    font-size: 5vw;
+    font-weight: 900;
+    color: var(--color-title-main-1);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    z-index: 2;
+    margin: 0;
+  }
+  
+  .floating-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .circle1 { top: 15%; left: 10%; animation-delay: 0s; }
+  .circle2 { top: 40%; right: 15%; animation-delay: 2s; }
+  .circle3 { bottom: 10%; left: 50%; animation-delay: 4s; }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  /* ---------- SECCIONES GENERALES ---------- */
+  
+  .cv-section {
+    margin-top: 4rem;
+  }
+  
+  .cv-section h2 {
+    font-size: 1.5rem;
+    color: var(--color-title-main-1);
+    margin-bottom: 1rem;
+  }
+  
+  .cv-section ul {
+    list-style: disc inside;
+    padding-left: 1rem;
+  }
+  
+  /* ---------- TECNOLOGÍAS (TAGS) ---------- */
+  
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tech-list span {
+    background-color: var(--color-cards);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .tech-list span:hover {
+    background-color: var(--color-hover);
+    color: white;
+  }
+  
+  /* ---------- BARRAS DE HABILIDADES ---------- */
+  
+  .skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .skill-bar {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 25px;
+  }
+  
+  .skill-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 1;
+    color: #333;
+  }
+  
+  .skill-fill {
+    background-color: var(--color-cards);
+    height: 100%;
+    border-radius: 20px;
+    z-index: 0;
+    transition: background-color 0.3s;
+  }
+  
+  .skill-fill:hover {
+    background-color: var(--color-hover);
+  }
+  
+  /* ---------- ABOUT CON LAYOUT LATERAL ---------- */
+  
+  .about-container {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .header-info {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    color: var(--color-title-main-2);
+    font-weight: bold;
+  }
+  
+  .email {
+    font-weight: bold;
+    color: var(--color-title-main-2);
+    margin-bottom: 1rem;
+  }
+  
+  .photo-stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .photo {
+    width: 220px;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .photo:hover {
+    transform: scale(1.05);
+  }
+  
+  .tilted-left {
+    transform: rotate(-5deg);
+  }
+  
+  .tilted-right {
+    transform: rotate(5deg);
+    z-index: 1;
+  }
+  
+  .about-text {
+    flex: 2;
+    max-width: 600px;
+  }
+  
+  .about-text h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-title-main-1);
+    margin-bottom: 1rem;
+  }
+  
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  /* ---------- RESPONSIVE ---------- */
+  
+  @media screen and (max-width: 768px) {
+    .cv-name {
+      font-size: 8vw;
+    }
+  
+    .cv-section {
+      margin-top: 2rem;
+    }
+  
+    .circle {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .skill-label {
+      font-size: 0.8rem;
+    }
+  
+    .skill-bar {
+      height: 20px;
+    }
+  
+    .tech-list span {
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-text h2 {
+      font-size: 1.4rem;
+    }
+  
+    .photo {
+      width: 160px;
+    }
+  }
+  .download-btn {
+    display: inline-block;
+    background-color: var(--color-title-main-2);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .download-btn:hover {
+    background-color: var(--color-hover);
+    transform: scale(1.05);
+  }
+  .cv-timeline {
+    margin-top: 4rem;
+  }
+  
+  .timeline-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+  }
+  
+  .timeline-date {
+    font-weight: bold;
+    color: var(--color-title-main-1);
+    min-width: 120px;
+    margin-right: 1rem;
+  }
+  
+  .timeline-content {
+    flex: 1;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .timeline-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .timeline-date {
+      margin-bottom: 0.5rem;
+    }
+  }
+      

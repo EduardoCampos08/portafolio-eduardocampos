@@ -1,0 +1,18 @@
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  .title-3d {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow:
+      1px 1px 0 #ccc,
+      2px 2px 0 #bbb,
+      3px 3px 0 #aaa;
+    transform: perspective(1000px);
+  }
+  
