@@ -30,7 +30,7 @@ const Contacto = () => {
         "portafolio",
         "TU_TEMPLATE_ID",
         formRef.current,
-        "TU_PUBLIC_KEY"
+        "GlxJlxBCc5uFfxXaP"
       )
       .then(
         () => {
