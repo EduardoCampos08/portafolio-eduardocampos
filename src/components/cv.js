@@ -31,7 +31,7 @@ const isInView = useInView(skillsRef, { once: true });
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          EDUARDO CAMPOS 
+          EDUARDO CAMPOS FRÍAS
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
